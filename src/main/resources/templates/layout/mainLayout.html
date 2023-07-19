@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="layout(main)" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../static/css/bootstrap/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="../../static/css/bootstrap/css/app.css"
+          th:href="@{/css/bootstrap/css/app.css}">
+</head>
+<body>
+<section>
+    <head>
+
+        <div id="widgetBar">
+
+            <a class="headerWidget" th:href="@{/confirm}">
+                [ language toggle ]
+            </a>
+
+
+            <a class="headerWidget" th:href="@{/checkout}">
+                [ checkout button ]
+            </a>
+
+
+            <a class="headerWidget" th:href="@{/shopping}">
+                [ shopping cart widget ]
+            </a>
+
+
+        </div>
+
+
+        </div>
+
+
+        <div class="container">
+            <a th:href="@{/home}"><img id="logo" src="../../static/images/logo.png" th:src="@{/images/logo.png}"
+                                       alt="images">
+                <img id="logoText" src="../../static/images/logoText.png" th:src="@{/images/logoText.png}" alt="images">
+                <img id="stalk" src="../../static/images/stalk.png" th:src="@{/images/stalk.png}" alt="images">
+            </a>
+        </div>
+
+    </head>
+
+</section>
+<section>
+    <div th:replace="${main}"></div>
+</section>
+<section>
+    <footer>
+        <div class="container">
+            <hr style="width:50%;text-align:left;margin-left:0;padding-bottom: 0;">
+            <div class="container pb-4 pl-5" style="font-size: small">
+                <a href="#"><u>Pirvacy policy</u></a>&nbsp;
+                <span>::</span>&nbsp;
+                <a href="#"><u>Contact</u></a>&nbsp;
+                <span>2010 affable bean</span>
+            </div>
+        </div>
+    </footer>
+</section>
+</body>
+</html>

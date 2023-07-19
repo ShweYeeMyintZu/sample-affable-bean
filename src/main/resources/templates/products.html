@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html th:replace="layout/mainLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+<body>
+<main role="main">
+    <div class="container my-5">
+
+        <a th:href="@{/shopping}"> <img src="../../static/images/cart.gif" th:src="@{/images/cart.gif}"
+                                        class="img-fluid"
+                                        alt="images"> <span th:text="${cartSize}"></span></a>
+
+        <div class="row">
+            <div class="col-md-6">
+
+                <div class="d-flex flex-column text-center text-capitalize text-white">
+                    <a th:href="@{'/products?cid=3'}" class="bg-button mb-3 ">
+                        Bakery</a>
+                    <a th:href="@{'/products?cid=1'}" class="bg-button mb-3">
+                        Dairy</a>
+                    <a th:href="@{'/products?cid=4'}" class="bg-button mb-3">
+                        Fruit &amp; VEG</a>
+                    <a th:href="@{'/products?cid=2'}" class="bg-button mb-3">
+                        Meats</a>
+
+                </div>
+
+
+            </div>
+            <div class="col-md-6">
+
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    <tr th:each="pro :${products}">
+                        <td><img src="../static/images/products" th:src="@{'/images/products/'+${pro.name}+'.png'}"
+                                 alt="images"></td>
+                        <td th:text="${pro.name}"></td>
+                        <td th:text="${'&euro;'+pro.price}"></td>
+                        <td><a th:href="@{'/add-cart?pid='+${pro.id}}">
+                            <button type="button">Purchase</button>
+                        </a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>

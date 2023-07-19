@@ -1,0 +1,75 @@
+img {
+    border: none;
+}
+
+body {
+    background: rgba(245, 232, 160, 0.49);
+}
+
+#logo {
+    float: left;
+    margin-left: 30px;
+    margin-top: 40px;
+}
+
+#stalk {
+
+    margin-top: -70px;
+    margin-left: -157px;
+    clear: both;
+}
+
+#logoText {
+    float: left;
+    margin: 20px 0 0 70px;
+    /* font styles apply to text within img alt attribute */
+    font-family: 'American Typewriter', Courier, monospace;
+    font-size: 50px;
+    color: #333;
+}
+
+#main {
+    clear: both;
+}
+
+.bg-button {
+    padding: 10px 30px 10px 30px;
+    background: lightblue;
+    border-radius: 10px;
+    font-size: 2rem;
+
+}
+
+#widgetBar {
+    height: 50px;
+    width: 800px;
+    float: right;
+
+}
+
+.headerWidget {
+    width: 194px;
+    margin: 20px 2px;
+    font-size: small;
+    float: right;
+    line-height: 25px;
+    color: black;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+.container a {
+    text-decoration: none !important;
+    color: black !important;
+}
+
+
+td button {
+
+    background-color: oldlace;
+    border-color: oldlace;
+    border-radius: 25%;
+
+}

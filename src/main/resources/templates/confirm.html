@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html th:replace="layout/mainLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container">
+        <div class="row">
+            <h3>Your order has been successfully processed and will be delivered within 24 hours.</h3>
+            <p>Please keep a note of your confirmation number: 321886792<br>
+                If you have a query concerning your order, feel free to <a href="#"><u>contact us</u>.</a> <br>
+                <br>
+
+                Thank you for shopping at the Affable Bean Green Grocer!</p>
+        </div>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="card">
+                    <div class="card-header" style="background-color: #C3E3E0">
+                        <h4>order summary</h4>
+                    </div>
+                    <div>
+                        <div class="card-body" style="background-color: #EDF8F7">
+                            <tbody>
+                                <table class="table table-info ">
+                                <tr>
+                                    <th>product</th>
+                                    <th>quantity</th>
+                                    <th>price</th>
+                                </tr>
+                                    <tr th:each="item: ${cartItems}">
+                                        <td th:text="${item.name}"></td>
+                                        <td th:text="${item.quantity}"> </td>
+                                        <td th:text="${item.price}"></td>
+                                    </tr>
+                                </table>
+                            <hr>
+                            <p>Delivery surcharge: <span>3.00</span></p>
+                            <p>Total : <span th:text="${total}"></span></p>
+                            <hr>
+                                <div id="current_date"></div>
+                                    <script>
+                                        document.getElementById("current_date").innerHTML = Date();
+                                    </script>
+                                </tbody>
+                            </div>
+                    </div>
+
+
+                </div>
+            </div>
+        
+
+
+            <div class="col-md-5" >
+                <div class="card">
+                <div class="card-header" style="background-color: #C3E3E0">
+
+                    <h4>delivery address</h4>
+                </div>
+
+
+                    <div class="card-body" style="background-color: #EDF8F7">
+
+
+
+
+                            <tbody>
+                            <tr th:each="cu : ${customers}">
+                                <p><td th:text="${cu.name}"></td></p>
+                               <p><td th:text="${cu.address}"></td></p>
+                               <p>Prague : <td th:text="${cu.prague}"></td></p>
+                                <hr>
+                                <p>email : <td th:text="${cu.email}"></td></p>
+                                <p>phone : <td th:text="${cu.phone}"></td></p>
+                            </tr>
+                            </tbody>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</main>
+</body>
+</html>

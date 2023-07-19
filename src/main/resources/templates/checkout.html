@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html th:replace="layout/mainLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+    <div class="container">
+        <h3><b>Checkout</b></h3>
+        <p>In order to purchase in your shopping cart, please provide us with the following information: </p>
+
+        <div class="row">
+            <div class="col-md-7" style="background-color: #F5EABE">
+
+                <div class="card-body">
+                    <form th:object="${customer}" th:action="@{/checkout}" method="post">
+
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" th:field="*{name}" class="form-control"
+                                   th:classappend="${#fields.hasErrors('name')}?'is-invalid'">
+                            <small class="invalid-feedback" th:if="${#fields.hasErrors('name')}"
+                                   th:errors="*{name}"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" id="email" th:field="*{email}" class="form-control"
+                                   th:classappend="${#fields.hasErrors('email')}?'is-invalid'">
+                            <small class="invalid-feedback" th:if="${#fields.hasErrors('email')}"
+                                   th:errors="*{email}"></small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="text" id="phone" th:field="*{phone}" class="form-control">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <input type="text" id="address" th:field="*{address}" class="form-control">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prague">Prague</label>
+                            <input type="number" id="prague" th:field="*{prague}" class="form-control">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="creditcartnumber">Credit card number</label>
+                            <input type="text" id="creditcartnumber" th:field="*{creditcardnumber}" class="form-control">
+                        </div>
+
+                        <input type="submit" class="btn btn-info btn-block" value="Purchase">
+
+                    </form>
+                </div>
+
+            </div>
+            <div class="col-md-5">
+                <ul>
+                    <li>Next-day deliver is guaranteed</li>
+                    <li>A &euro; 3.00 delivery surcharge is applied to all purchase orders</li>
+                </ul>
+                <div class="container" style="background-color: #C3E3E0">
+                    <p>Subtotal : &euro;<span th:text="${totalPrice}"></span></p>
+                    <p>Delivery surcharge : &euro;<span>3.00</span></p>
+                    <hr>
+                    <p>total : &euro;<span th:text="${total}"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

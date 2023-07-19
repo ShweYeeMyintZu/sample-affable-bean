@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html th:replace="layout/mainLayout :: layout(~{::main})" xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<main role="main">
+
+    <div class="container my-5">
+        <div class="row md-3">
+            <div class="col-md-12">
+                <p>Your Shopping Cart Contains <span th:text="${cartSize}"></span> items.</p>
+            </div>
+        </div>
+
+
+        <div class="container" style="margin: auto">
+            <a th:href="@{/clear-cart}" class="pl-5">[Clear Cart]</a>&nbsp;
+
+            <a th:href="@{'/products?cid=1'}" class="pl-5">[Continue Shopping]</a>&nbsp;
+
+            <a th:href="@{/checkout}" class="pl-5">[proceeded to checkout]</a>
+
+        </div>
+
+
+        <div class="row md-3">
+            <div class="col-md-8"></div>
+            <div class="col-md-4"><h4 class="text-muted text-right">Subtotal :: $<span th:text="${totalPrice}"></span>
+            </h4>
+            </div>
+        </div>
+        <div class="row md-3">
+            <div class="col-md-12">
+                <table class="table table-striped">
+
+                    <div>
+                        <form th:action="@{/check2}" th:object="${cartItem}" method="post">
+                            <div th:if="${!cartItems.isEmpty()}">
+
+                                <table class="table table-striped  ">
+                                    <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    <tr th:each="item :${cartItems}">
+                                        <td><img src="../static/images/products"
+                                                 th:src="@{'/images/products/'+${item.name}+'.png'}" alt="images"></td>
+                                        <td th:text="${item.name}"></td>
+                                        <td th:text="${'&euro;'+item.price}"></td>
+                                        <td th:if="${!item.render}" th:text="${item.quantity}"></td>
+
+                                        <td th:if="${item.render}">
+                                            <input type="number" min="1" th:field="*{quantityLinkedList}"
+                                                   class="form-control">
+                                        </td>
+
+
+                                        <td><a th:if="${!changeButton}" th:href="@{/check1}"
+                                        >
+                                            <button type="button">Update</button>
+                                        </a></td>
+
+                                        <td><input type="submit" th:if="${changeButton}"
+                                                   class="btn btn-outline-primary" value="Save"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+
+                            </div>
+                            <div th:if="${cartItems.isEmpty()}">
+                                <div class="alert alert-success" role="alert"><p>No Cart Item!</p></div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+
+</main>
+</body>
+</html>
